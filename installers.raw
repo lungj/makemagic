@@ -12,6 +12,12 @@ endif
 	cd gnutools-arm; mv $$(ls | grep gcc) gnutools && mv gnutools/* . && rmdir gnutools
 	echo export PATH=\$$PATH:`pwd`/gnutools-arm/bin >> ~/.bash_profile
 
+### doxygen
+command: doxygen
+
+doxygen.mac:
+	brew install doxygen
+
 ### OpenOCD
 command: openocd
 
