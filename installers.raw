@@ -12,34 +12,40 @@ endif
 	cd gnutools-arm; mv $$(ls | grep gcc) gnutools && mv gnutools/* . && rmdir gnutools
 	echo export PATH=\$$PATH:`pwd`/gnutools-arm/bin >> ~/.bash_profile
 
+### homebrew
+command: homebrew
+
+homebrew.mac:
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 ### doxygen
 command: doxygen
 
-doxygen.mac:
+doxygen.mac: | $(brew)
 	brew install doxygen
 
 ### OpenOCD
 command: openocd
 
-openocd.mac:
+openocd.mac: $(brew)
 	brew install open-ocd
 
 ### automake
 command: automake
 
-automake.mac:
+automake.mac: $(brew)
 	brew install automake
 
 ### autoconf
 command: autoconf
 
-autoconf.mac:
+autoconf.mac: $(brew)
 	brew install autoconf
 
 ### pkg-config
 command: pkgconfig
 
-pkgconfig.mac:
+pkgconfig.mac: $(brew)
 	brew install pkg-config
 
 ## pyyaml
