@@ -1,0 +1,62 @@
+### gnutools for ARM
+command: arm-none-eabi-gcc name: gnutools-arm
+
+gnutools-arm.mac gnutools-arm.linux:
+ifndef GCC_ARM_GNU_TOOLS_URL_PREFIX
+    $(error GCC_ARM_GNU_TOOLS_URL_PREFIX is undefined. Try https://launchpad.net/gcc-arm-embedded/4.9/4.9-2014-q4-major/+download/gcc-arm-none-eabi-4_9-2014q4-20141203-)
+endif
+	mkdir -p gnutools-arm
+	$(call download,$(GCC_ARM_GNU_TOOLS_URL_PREFIX)$(OS).tar.bz2,gnutools-arm/gnutools-$(OS).tar.bz2)
+
+	cd gnutools-arm; bunzip2 gnutools-$(OS).tar.bz2 && tar xvf gnutools-$(OS).tar && rm gnutools-$(OS).tar
+	cd gnutools-arm; mv $$(ls | grep gcc) gnutools && mv gnutools/* . && rmdir gnutools
+	echo export PATH=\$$PATH:`pwd`/gnutools-arm/bin >> ~/.bash_profile
+
+### OpenOCD
+command: openocd
+
+openocd.mac:
+	brew install open-ocd
+
+### automake
+command: automake
+
+automake.mac:
+	brew install automake
+
+### autoconf
+command: autoconf
+
+autoconf.mac:
+	brew install autoconf
+
+### pkg-config
+command: pkgconfig
+
+pkgconfig.mac:
+	brew install pkg-config
+
+## pyyaml
+pymodule: yaml name: pyyaml
+
+pyyaml.mac: | $(libyaml)
+	sudo easy_install pyyaml
+
+
+### libusb
+lib: libusb
+
+libusb.mac:
+	brew install libusb
+
+### libusb-compat
+lib: libusb-compat
+
+libusb-compat.mac:
+	brew install libusb-compat
+
+### libyaml
+lib: libyaml
+
+libyaml.mac:
+	brew install libyaml
