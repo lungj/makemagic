@@ -28,7 +28,7 @@ doxygen.mac: | $(brew)
 command: openocd
 
 openocd.mac: $(brew)
-	brew install open-ocd
+	brew install --HEAD openocd
 
 ### automake
 command: automake
