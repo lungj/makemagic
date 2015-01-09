@@ -11,6 +11,7 @@ help:
 include $(MAKEMAGIC_DIR)makemagic/os_detection.mk
 include $(MAKEMAGIC_DIR)makemagic/terminal.mk
 include $(MAKEMAGIC_DIR)makemagic/dir_functions.mk
+include $(MAKEMAGIC_DIR)makemagic/file_functions.mk
 include $(MAKEMAGIC_DIR)makemagic/prerequisite_functions.mk
 include $(MAKEMAGIC_DIR)makemagic/web_functions.mk
 include $(MAKEMAGIC_DIR)makemagic/installers.mk
