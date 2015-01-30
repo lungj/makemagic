@@ -96,3 +96,16 @@ jquery.mac: $(jquery-git-module)
 
 jquery-git-module.mac:
 	@git submodule add https://github.com/github/jquery.git
+
+### jQuery Mobile
+file: jquery-mobile/dist/jquery.mobile.zip name: jquery-mobile
+
+directory: jquery-mobile name: jquery-mobile-git-module
+
+jquery-mobile.mac: $(jquery-mobile-git-module) $(jquery)
+	git submodule init
+	git submodule update
+	cd jquery-mobile; npm install && grunt
+
+jquery-mobile-git-module.mac:
+	git submodule add https://github.com/jquery/jquery-mobile.git
