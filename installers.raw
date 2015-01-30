@@ -70,3 +70,29 @@ library: libyaml
 
 libyaml.mac:
 	brew install libyaml
+
+### node.js
+command: npm
+
+npm.mac: $(brew)
+	brew install node
+
+### grunt
+command: grunt
+
+grunt.%: $(nodejs)
+	npm install -g grunt-cli
+
+
+### jQuery
+file: jquery/dist/jquery.min.js name: jquery
+
+directory: jquery name: jquery-git-module
+
+jquery.mac: $(jquery-git-module)
+	git submodule init
+	git submodule update
+	cd jquery; npm install && grunt
+
+jquery-git-module.mac:
+	@git submodule add https://github.com/github/jquery.git
