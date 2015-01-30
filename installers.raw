@@ -2,9 +2,7 @@
 command: arm-none-eabi-gcc name: gnutools-arm
 
 gnutools-arm.mac gnutools-arm.linux:
-ifndef GCC_ARM_GNU_TOOLS_URL_PREFIX
-    $(error GCC_ARM_GNU_TOOLS_URL_PREFIX is undefined. Try https://launchpad.net/gcc-arm-embedded/4.9/4.9-2014-q4-major/+download/gcc-arm-none-eabi-4_9-2014q4-20141203-)
-endif
+	@if [ "$(GCC_ARM_GNU_TOOLS_URL_PREFIX)" = "" ]; then echo "GCC_ARM_GNU_TOOLS_URL_PREFIX is undefined. Try https://launchpad.net/gcc-arm-embedded/4.9/4.9-2014-q4-major/+download/gcc-arm-none-eabi-4_9-2014q4-20141203-"; exit 1; fi
 	mkdir -p gnutools-arm
 	$(call download,$(GCC_ARM_GNU_TOOLS_URL_PREFIX)$(OS).tar.bz2,gnutools-arm/gnutools-$(OS).tar.bz2)
 
