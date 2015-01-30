@@ -1,6 +1,6 @@
 ### Check whether things are installed
 # 0 if true, 1 otherwise
-CMD_EXISTS = $(strip $(shell (which $(1) > /dev/null); echo $$?))
+COMMAND_EXISTS = $(strip $(shell (which $(1) > /dev/null); echo $$?))
 
 # 0 if library is installed, 1 otherwise
 ifeq ($(OS), mac)

@@ -54,19 +54,19 @@ pyyaml.mac: | $(libyaml)
 
 
 ### libusb
-lib: libusb
+library: libusb
 
 libusb.mac:
 	brew install libusb
 
 ### libusb-compat
-lib: libusb-compat
+library: libusb-compat
 
 libusb-compat.mac:
 	brew install libusb-compat
 
 ### libyaml
-lib: libyaml
+library: libyaml
 
 libyaml.mac:
 	brew install libyaml
