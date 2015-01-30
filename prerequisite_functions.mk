@@ -15,4 +15,7 @@ PYMODULE_EXISTS = $(strip $(shell (python -c "import $(1)" 2&> /dev/null); echo 
 # 0 if file exists, 1 otherwise
 FILE_EXISTS = $(strip $(shell [ -f "$(1)" ]; echo $$?))
 
+# 0 if directory exists, 1 otherwise
+DIRECTORY_EXISTS = $(strip $(shell [ -d "$(1)" ]; echo $$?))
+
 isinstalled = $(if $(findstring undefined,$(origin $(1))),,$(1).missing)
