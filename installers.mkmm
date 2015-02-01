@@ -127,3 +127,9 @@ command: yo
 
 yo.%: $(npm)
 	npm install -g yo
+
+### phonegap
+command: phonegap
+
+phonegap.%: $(npm)
+	npm install -g phonegap
