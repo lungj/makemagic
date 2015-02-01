@@ -16,10 +16,13 @@ MAKEFILE = $(CURDIR)/$(word 1,$(MAKEFILE_LIST))
 
 help:
 
+%.mkmk: %.mkmm %.mkpp
+	$*.mkpp < $*.mkmm > $*.mkmk
+
 include $(MAKEMAGIC_DIR)/os_detection.mk
 include $(MAKEMAGIC_DIR)/terminal.mk
 include $(MAKEMAGIC_DIR)/dir_functions.mk
 include $(MAKEMAGIC_DIR)/file_functions.mk
 include $(MAKEMAGIC_DIR)/prerequisite_functions.mk
 include $(MAKEMAGIC_DIR)/web_functions.mk
-include $(MAKEMAGIC_DIR)/installers.mk
+include $(MAKEMAGIC_DIR)/installers.mkmk
