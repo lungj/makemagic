@@ -6,6 +6,12 @@
 ###
 .phony: help
 
+cur_makefile = $(CURDIR)/$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
+# This file's filename.
+MAKEMAGIC := $(cur_makefile)
+# The name of the file originally invoked for Make. Assumes no MAKEFILES used.
+MAKEFILE = $(CURDIR)/$(word 1,$(MAKEFILE_LIST))
+
 help:
 
 include $(MAKEMAGIC_DIR)makemagic/os_detection.mk
