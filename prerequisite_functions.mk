@@ -4,7 +4,8 @@ COMMAND_EXISTS = $(strip $(shell (which $(1) > /dev/null); echo $$?))
 
 # 0 if library is installed, 1 otherwise
 ifeq ($(OS), mac)
- LIBRARY_EXISTS = $(strip $(shell (brew ls $(1) > /dev/null 2> /dev/null); echo $$?))
+ INSTALLED_LIBS := $(shell brew ls)
+ LIBRARY_EXISTS = $(subst x,0,$(subst 0,1,$(subst 1,x,$(words $(filter libevent, $(INSTALLED_LIBS))))))
 else
  $(error "I don't know how to check if a library is installed on this system.")
 endif
