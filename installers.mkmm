@@ -109,3 +109,9 @@ jquery-mobile.mac: $(jquery) $(jquery-mobile-git-module)
 
 jquery-mobile-git-module.mac:
 	git submodule add https://github.com/jquery/jquery-mobile.git
+
+### bower
+command: bower
+
+bower.%: $(npm)
+	npm install -g bower
