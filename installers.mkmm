@@ -121,3 +121,9 @@ command: sass
 
 sass.mac:
 	gem install sass
+
+### yeoman
+command: yo
+
+yo.%: $(npm)
+	npm install -g yo
