@@ -89,7 +89,7 @@ file: jquery/dist/jquery.min.js name: jquery
 
 directory: jquery name: jquery-git-module
 
-jquery.mac: $(jquery-git-module)
+jquery.mac: $(jquery-git-module) $(grunt)
 	git submodule init
 	git submodule update
 	cd jquery; npm install && grunt
