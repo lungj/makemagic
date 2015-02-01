@@ -115,3 +115,9 @@ command: bower
 
 bower.%: $(npm)
 	npm install -g bower
+
+### sass
+command: sass
+
+sass.mac:
+	gem install sass
