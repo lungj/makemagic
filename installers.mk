@@ -1,4 +1,4 @@
-$(MAKEMAGIC_DIR)makemagic/installers.proc: $(MAKEMAGIC_DIR)makemagic/installers.raw
+$(MAKEMAGIC_DIR)/installers.proc: $(MAKEMAGIC_DIR)/installers.raw
 	@cat $< \
 	| python -c 'MARKER="command"; EXISTS_FN = "%s_EXISTS" % MARKER.upper(); import re; import sys; filecont = sys.stdin.read(); filecont = re.sub("^%s: (.*) name: (.*)" % MARKER, "ifeq ($$(call %s,\\1),1)\\n\\2 = \\2.$(OS)\\nendif" % EXISTS_FN, filecont, flags=re.MULTILINE); filecont = re.sub("^%s: (.*)" % MARKER, "ifeq ($$(call %s,\\1),1)\\n\\1 = \\1.$(OS)\\nendif" % EXISTS_FN, filecont, flags=re.MULTILINE); print(filecont)' \
 	| python -c 'MARKER="pymodule"; EXISTS_FN = "%s_EXISTS" % MARKER.upper(); import re; import sys; filecont = sys.stdin.read(); filecont = re.sub("^%s: (.*) name: (.*)" % MARKER, "ifeq ($$(call %s,\\1),1)\\n\\2 = \\2.$(OS)\\nendif" % EXISTS_FN, filecont, flags=re.MULTILINE); filecont = re.sub("^%s: (.*)" % MARKER, "ifeq ($$(call %s,\\1),1)\\n\\1 = \\1.$(OS)\\nendif" % EXISTS_FN, filecont, flags=re.MULTILINE); print(filecont)' \
@@ -7,4 +7,4 @@ $(MAKEMAGIC_DIR)makemagic/installers.proc: $(MAKEMAGIC_DIR)makemagic/installers.
 	| python -c 'MARKER="directory"; EXISTS_FN = "%s_EXISTS" % MARKER.upper(); import re; import sys; filecont = sys.stdin.read(); filecont = re.sub("^%s: (.*) name: (.*)" % MARKER, "ifeq ($$(call %s,\\1),1)\\n\\2 = \\2.$(OS)\\nendif" % EXISTS_FN, filecont, flags=re.MULTILINE); filecont = re.sub("^%s: (.*)" % MARKER, "ifeq ($$(call %s,\\1),1)\\n\\1 = \\1.$(OS)\\nendif" % EXISTS_FN, filecont, flags=re.MULTILINE); print(filecont)' \
 	> $@
 
-include $(MAKEMAGIC_DIR)makemagic/installers.proc
+include $(MAKEMAGIC_DIR)/installers.proc
