@@ -151,3 +151,9 @@ command: ionic
 
 ionic.%: $(npm) $(cordova)
 	npm install -g ionic
+
+### jekyll
+command: jekyll
+
+jekyll.%:
+	sudo gem install ionic
