@@ -134,6 +134,12 @@ command: phonegap
 phonegap.%: $(npm)
 	npm install -g phonegap
 
+### cordova
+command: cordova
+
+cordova.%: $(npm)
+	npm install -g cordova
+
 ### gulp
 command: gulp
 
