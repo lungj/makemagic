@@ -85,30 +85,30 @@ grunt.%: $(nodejs)
 
 
 ### jQuery
-file: jquery/dist/jquery.min.js name: jquery
+file: $(DEPENDENCY_DIRECTORY)/jquery/dist/jquery.min.js name: jquery
 
-directory: jquery name: jquery-git-module
+directory: $(DEPENDENCY_DIRECTORY)/jquery name: jquery-git-module
 
 jquery.mac: $(jquery-git-module) $(grunt)
 	git submodule init
 	git submodule update
-	cd jquery; npm install && grunt
+	cd $(DEPENDENCY_DIRECTORY)/jquery; npm install && grunt
 
 jquery-git-module.mac:
-	git submodule add https://github.com/github/jquery.git
+	git submodule add https://github.com/github/jquery.git $(DEPENDENCY_DIRECTORY)/jquery
 
 ### jQuery Mobile
-file: jquery-mobile/dist/jquery.mobile.zip name: jquery-mobile
+file: $(DEPENDENCY_DIRECTORY)/jquery-mobile/dist/jquery.mobile.zip name: jquery-mobile
 
-directory: jquery-mobile name: jquery-mobile-git-module
+directory: $(DEPENDENCY_DIRECTORY)/jquery-mobile name: jquery-mobile-git-module
 
 jquery-mobile.mac: $(jquery) $(jquery-mobile-git-module)
 	git submodule init
 	git submodule update
-	cd jquery-mobile; npm install && grunt
+	cd $(DEPENDENCY_DIRECTORY)/jquery-mobile; npm install && grunt
 
 jquery-mobile-git-module.mac:
-	git submodule add https://github.com/jquery/jquery-mobile.git
+	git submodule add https://github.com/jquery/jquery-mobile.git $(DEPENDENCY_DIRECTORY)/jquery-mobile
 
 ### bower
 command: bower

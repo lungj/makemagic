@@ -10,6 +10,7 @@
 
 PROJECT_NAME ?= "Makemagic Project"
 DOC_DIRECTORY ?= "docs"
+DEPENDENCY_DIRECTORY ?= "dep"
 
 cur_makefile = $(realpath $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST)))
 # This file's filename.
@@ -42,7 +43,7 @@ getting_started: docs devenv
 ### Generate documentation
 docs: $(doxygen)
 	@echo Generating documentation...
-	@export PROJECT_NAME=$(PROJECT_NAME); export DOC_DIRECTORY=$(DOC_DIRECTORY); (if [ -f Doxyfile ]; then doxygen 2>&1-; else doxygen $(MAKEMAGIC_DIR)/Doxyfile 2>&1-; fi) | grep ":"; if [ $$? == 0 ]; then exit 1; fi
+	@export PROJECT_NAME=$(PROJECT_NAME); export DOC_DIRECTORY=$(DOC_DIRECTORY); export DEPENDENCY_DIRECTORY=$(DEPENDENCY_DIRECTORY); (if [ -f Doxyfile ]; then doxygen 2>&1-; else doxygen $(MAKEMAGIC_DIR)/Doxyfile 2>&1-; fi) | grep ":"; if [ $$? == 0 ]; then exit 1; fi
 	@echo "Done."
 
 mm.docs.help:
