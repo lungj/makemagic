@@ -145,3 +145,9 @@ command: gulp
 
 gulp.%: $(npm)
 	npm install -g gulp
+
+### ionic
+command: ionic
+
+ionic.%: $(npm) $(cordova)
+	npm install -g ionic
