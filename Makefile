@@ -33,9 +33,13 @@ include $(MAKEMAGIC_DIR)/os_detection.mk
 include $(MAKEMAGIC_DIR)/terminal.mk
 include $(MAKEMAGIC_DIR)/dir_functions.mk
 include $(MAKEMAGIC_DIR)/file_functions.mk
-include $(MAKEMAGIC_DIR)/prerequisite_functions.mk
 include $(MAKEMAGIC_DIR)/web_functions.mk
+
+# Do not import installers package if not requested.
+ifndef MAKEMAGIC_NO_INSTALLERS
+include $(MAKEMAGIC_DIR)/prerequisite_functions.mk
 include $(MAKEMAGIC_DIR)/installers.mkmk
+endif
 
 ### Update everything to get going
 getting_started: docs devenv
