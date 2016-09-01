@@ -6,7 +6,13 @@ COMMAND_EXISTS = $(strip $(shell (which $(1) > /dev/null); echo $$?))
 ifeq ($(OS), mac)
  INSTALLED_LIBS := $(shell brew ls)
  LIBRARY_EXISTS = $(subst x,0,$(subst 0,1,$(subst 1,x,$(words $(filter libevent, $(INSTALLED_LIBS))))))
-else
+endif
+
+ifeq ($(OS), linux-debian)
+ # Not yet implemented; silence warnings
+endif
+
+ifndef INSTALLED_LIBS
  $(error "I don't know how to check if a library is installed on this system.")
 endif
 

@@ -22,11 +22,17 @@ command: doxygen
 doxygen.mac: | $(brew)
 	brew install doxygen
 
+doxygen.linux-debian:
+	apt-get install doxygen
+
 ### OpenOCD
 command: openocd
 
 openocd.mac: $(brew)
 	brew install --HEAD openocd
+
+openocd.linux-debian:
+	apt-get install openocd
 
 ### automake
 command: automake
