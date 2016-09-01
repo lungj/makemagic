@@ -4,7 +4,8 @@ COMMAND_EXISTS = $(strip $(shell (which $(1) > /dev/null); echo $$?))
 
 # 0 if library is installed, 1 otherwise
 ifeq ($(OS), mac)
- INSTALLED_LIBS := $(shell brew ls)
+ # Check the homebrew directory.
+ INSTALLED_LIBS := $(shell ls /usr/local/Cellar/)
  LIBRARY_EXISTS = $(subst x,0,$(subst 0,1,$(subst 1,x,$(words $(filter libevent, $(INSTALLED_LIBS))))))
 endif
 
