@@ -19,3 +19,9 @@ ifndef OS
  KERNEL = win
  OS = win
 endif
+
+ifeq ($(UNAME),Linux)
+  LOGICAL_PROCESSORS := $(shell grep -c ^processor /proc/cpuinfo)
+else ifeq ($(UNAME),Darwin)
+  LOGICAL_PROCESSORS := $(shell sysctl -n hw.ncpu)
+endif # $(OS)
